@@ -1,14 +1,22 @@
 <template lang="pug">
   #app
+    //- <BaseHeader/>
+    <BaseSwitch v-model="value"/>
     router-view
 </template>
 
 <script>
+import BaseSwitch from '@/components/BaseSwitch'
+
 export default {
-  name: 'app',
+  name: 'App',
+  components: {
+    BaseSwitch
+  },
   data () {
     return {
       title: 'Parrot Body',
+      value: false
     }
   }
 }
