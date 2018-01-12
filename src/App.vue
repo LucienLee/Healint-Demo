@@ -1,31 +1,50 @@
 <template lang="pug">
   #app
-    //- <BaseHeader/>
-    <BaseSwitch v-model="value"/>
-    router-view
+    NavBar(:title="title")
+    section.section
+      TabBar(:value="selected", @input="handleTabBarSelected")
+        TabBarItem(id="recent") Recent
+        TabBarItem(id="trend") Trend
+        TabBarItem(id="settings")
+          span.icon.is-small
+            FontAwesomeIcon(icon="cog")
+          | Settings
+      router-view
 </template>
 
 <script>
-import BaseSwitch from '@/components/BaseSwitch'
+import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
+import router from '@/router'
+import NavBar from '@/components/NavBar'
+import TabBar from '@/components/TabBar'
+import TabBarItem from '@/components/TabBarItem'
+
+import '@/sass/bulma.sass'
 
 export default {
   name: 'App',
   components: {
-    BaseSwitch
+    NavBar,
+    TabBar,
+    TabBarItem,
+    FontAwesomeIcon
   },
   data () {
     return {
       title: 'Parrot Body',
-      value: false
+      selected: this.$route.name
+    }
+  },
+  methods: {
+    handleTabBarSelected (selectedID) {
+      this.selected = selectedID
+      router.push({ name: selectedID })
     }
   }
 }
 </script>
 
 <style lang="sass">
-#app
-  font-family: 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-
+body
+  padding-top: 3.25em
 </style>

@@ -8,7 +8,7 @@ label.switch
 
 <script>
 export default {
-  name: 'BaseSwitch',
+  name: 'ToggleSwitch',
   props: {
     value: {
       type: Boolean,
@@ -29,10 +29,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import '../sass/var'
+@import '../sass/variables'
 
 $width: 52px
-$height: 32px
+$height: 30px
 $border-size: 1px
 $knob-size: $height - $border-size * 2
 
@@ -51,8 +51,8 @@ $knob-size: $height - $border-size * 2
   display: none
 
   &:checked + .switch-core
-    border-color: $primary
-    background-color: $primary
+    border-color: $blue
+    background-color: $blue
 
     &::before
       transform: scale(0)
@@ -65,10 +65,10 @@ $knob-size: $height - $border-size * 2
   position: relative
   width: $width
   height: $height
-  border: 1px solid $grey-light
+  border: 1px solid $dark
   border-radius: $height / 2
   box-sizing: border-box
-  background: $grey-light
+  background: $grey-darker
 
   &::after, &::before
     content: ""
@@ -87,5 +87,5 @@ $knob-size: $height - $border-size * 2
   &::before
     width: $width - $border-size * 2
     height: $height - $border-size * 2
-    background-color: #fdfdfd
+    background-color: $grey-darker
 </style>

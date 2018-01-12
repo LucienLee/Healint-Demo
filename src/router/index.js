@@ -9,12 +9,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'RecentPage',
+      name: 'recent',
       component: RecentPage
     },
     {
       path: '/settings',
-      name: 'SettingsPage',
+      name: 'settings',
       component: SettingsPage
     }
   ]
