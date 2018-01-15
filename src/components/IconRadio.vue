@@ -66,6 +66,7 @@ export default {
   flex-wrap: wrap
   justify-content: center
   align-items: center
+  cursor: pointer
 
 .iconRadio-input
   display: none
@@ -73,12 +74,15 @@ export default {
 .iconRadio-label
   text-transform: uppercase
   max-width: 100%
-  margin: 0 auto
+  margin: 0.4em auto
 
   +until($mobile-small)
     font-size: 0.8em
 
   +until($mobile)
     width: 100%
+
+  +from($desktop)
+    margin-left: 2em
 
 </style>

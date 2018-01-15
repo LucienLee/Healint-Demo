@@ -17,20 +17,20 @@
         .p(v-else) No treatment
     p.card-title.card-title--empty(v-else)
       FontAwesomeIcon.icon(icon="question-circle")
-      span.is-size-7 {{ `How was your ${normalizeDate(currentRecord.date)}?` }}
+      span.is-size-7.is-size-5-desktop {{ `How was your ${normalizeDate(currentRecord.date)}?` }}
   .field.is-clearfix(v-else)
     label.label.card-section
-      h2.title.is-6.has-text-centered {{ `How was your ${normalizeDate(currentRecord.date)}?` }}
+      h2.title.is-6.is-size-5-desktop.has-text-centered {{ `How was your ${normalizeDate(currentRecord.date)}?` }}
       IconRadio(v-model="currentRecord.dayType", :options="dayTypeOptions", :styles="dayTypeStyles", :highlightOnInit="true")
     div(v-if="currentRecord.dayExists || currentRecord.dayType")
       label.label.card-section
-        p.is-size-7.card-label Were your activities affected?
+        p.is-size-7.is-size-6-desktop.card-label Were your activities affected?
         IconRadio(v-model="currentRecord.activeLevel", :options="activeLevelOptions", :styles="activeLevelStyles")
       label.label.card-section
-        p.is-size-7.card-label Treatment(s) Used
+        p.is-size-7.is-size-6-desktop.card-label Treatment(s) Used
         TagSelect(v-model="currentRecord.treatment", :options="treatmentOptions")
       label.label.card-section
-        p.is-size-7.card-label Notes
+        p.is-size-7.is-size-6-desktop.card-label Notes
         textarea.textarea(placeholder="Your notes", rows="3", v-model="currentRecord.notes")
       button.button.is-pulled-right(@click.stop="handleSubmit") Done
 
@@ -97,12 +97,10 @@ export default {
         },
         label: {
           on: {
-            color: type.color,
-            marginTop: '0.5em'
+            color: type.color
           },
           off: {
-            color: type.color,
-            marginTop: '0.5em'
+            color: type.color
           }
         }
       }))

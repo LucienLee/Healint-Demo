@@ -1,6 +1,10 @@
-# healint
+# Healint
 
-> A Vue.js project
+## feature
+- Interact real data with firebase API
+- Responsive layout, but has better experience on tablet and mobile
+- No any vue component deps
+- Some Components(elements, eg, switch, tab bar, icon radio) is ready for production
 
 ## Build Setup
 
@@ -18,9 +22,5 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-
 ## Acknowledge
-- https://thenounproject.com/ale-es/collection/batteries/
-- https://thenounproject.com/asteryou/collection/face/
+- Theme is customized with [Bulma](https://bulma.io/)

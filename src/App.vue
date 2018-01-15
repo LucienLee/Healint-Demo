@@ -48,6 +48,6 @@ export default {
 </script>
 
 <style lang="sass">
-body
+#app
   padding-top: 3.25em
 </style>
