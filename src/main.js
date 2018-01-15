@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import fontawesome from '@fortawesome/fontawesome'
 import {
-  faCog, faSortDown,
+  faCog, faSortDown, faQuestionCircle,
   faBatteryEmpty, faBatteryHalf, faBatteryFull,
   faSmile, faMeh, faFrown
 } from '@fortawesome/fontawesome-free-solid'
@@ -15,7 +15,7 @@ import router from './router'
 Vue.config.productionTip = false
 
 fontawesome.library.add(
-  faCog, faSortDown,
+  faCog, faSortDown, faQuestionCircle,
   faBatteryEmpty, faBatteryHalf, faBatteryFull,
   faSmile, faMeh, faFrown
 )

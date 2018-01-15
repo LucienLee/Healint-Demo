@@ -1,4 +1,4 @@
-import { fetchSettings, updateSettings } from '@/firebase'
+import { fetchSettings, updateSettings, fetchRecords, updateRecord } from '@/firebase'
 
 export default {
   async getSettings ({ commit }) {
@@ -12,7 +12,34 @@ export default {
     await updateSettings(settings)
     commit('UPDATE_SETTINGS', { settings })
   },
-  changeLoading ({ commit }, isLoading) {
-    commit('SET_LOADING', { isLoading })
+  async getRecords ({ commit }) {
+    commit('SET_LOADING', { isLoading: true })
+    const records = await fetchRecords()
+    records.map(record => {
+      if (record.dayExists) {
+        record.treatment = record.treatment ? Object.keys(record.treatment) : []
+      }
+      return record
+    })
+    commit('SET_RECORDS', { records })
+    commit('SET_LOADING', { isLoading: false })
+  },
+  async changeRecord ({ commit, state }, record) {
+    commit('SET_LOADING', { isLoading: true })
+    const normalized = {
+      ...record,
+      treatment: record.treatment.reduce((acc, cur) => ({
+        ...acc,
+        [cur]: true
+      }), {})
+    }
+    try {
+      await updateRecord(normalized)
+      commit('UPDATE_RECORD', { record })
+      commit('SET_LOADING', { isLoading: false })
+      return record
+    } catch (e) {
+      return e
+    }
   }
 }

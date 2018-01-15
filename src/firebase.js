@@ -9,15 +9,28 @@ const config = {
 const firebaseApp = Firebase.initializeApp(config)
 const db = firebaseApp.database()
 
-export function fetchSettings () {
+function fetchData (ref) {
   return new Promise(resolve => {
-    db.ref('/settings').once('value', function (snapshot) {
+    db.ref(ref).once('value', function (snapshot) {
       resolve(snapshot.val())
     })
   })
 }
 
+export function fetchSettings () {
+  return fetchData('/settings')
+}
+
 export function updateSettings (settings) {
   const {id: _, ...changedSettings} = settings
   return db.ref(`/settings/${settings.id}`).update(changedSettings)
+}
+
+export function fetchRecords () {
+  return fetchData('/records')
+}
+
+export function updateRecord (record) {
+  const {id: _, ...changedRecord} = record
+  return db.ref(`/records/${record.id}`).update(changedRecord)
 }

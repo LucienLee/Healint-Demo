@@ -16,6 +16,7 @@ $blue:         #5bc0de
 $red:          #d9534f
 
 $primary: $orange !default
+$info: $blue
 
 $dark: darken($grey-darker, 3)
 
@@ -31,7 +32,7 @@ $body-background-color: $grey-darker
 $border: $grey
 
 $family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif
-$size-7: 0.88em
+$size-7: 0.84em
 
 $text: $grey-lighter
 $text-strong: darken($grey-lighter, 10)
@@ -75,10 +76,10 @@ $dropdown-item-color: $text
 $tabs-link-active-color: $primary
 $tabs-link-active-border-bottom-color: $primary
 
-$section-padding: 1em 1.5em 2em
+$section-horizontal-padding: 1.5em
+$section-padding: 1em $section-horizontal-padding 2em
+
+$mobile-small: 375px
+$mobile: 576px
 
 @import "~bulma/sass/utilities/derived-variables"
-
-
-
-

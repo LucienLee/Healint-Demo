@@ -6,8 +6,7 @@
         TabBarItem(id="recent") Recent
         TabBarItem(id="trend") Trend
         TabBarItem(id="settings")
-          span.icon.is-small
-            FontAwesomeIcon(icon="cog")
+          FontAwesomeIcon.icon.is-small(icon="cog")
           | Settings
       router-view
 </template>
@@ -34,6 +33,10 @@ export default {
       title: 'Parrot Body',
       selected: this.$route.name
     }
+  },
+  created () {
+    this.$store.dispatch('getSettings')
+    this.$store.dispatch('getRecords')
   },
   methods: {
     handleTabBarSelected (selectedID) {

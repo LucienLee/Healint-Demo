@@ -43,9 +43,6 @@ export default {
       return this.$store.state.settings
     }
   },
-  created () {
-    this.$store.dispatch('getSettings')
-  },
   methods: {
     updateStatus (id, status) {
       this.$store.dispatch('changeSettings', {
