@@ -8,6 +8,8 @@
         TabBarItem(id="settings")
           FontAwesomeIcon.icon.is-small(icon="cog")
           | Settings
+      div.has-text-centered(v-if="isLoading")
+        FontAwesomeIcon.icon.is-medium(icon="spinner", spin)
       router-view
 </template>
 
@@ -31,12 +33,17 @@ export default {
   data () {
     return {
       title: 'Parrot Body',
-      selected: this.$route.name
+      selected: this.$route.name,
+      isLoading: true
     }
   },
   created () {
-    this.$store.dispatch('getSettings')
-    this.$store.dispatch('getRecords')
+    Promise.all([
+      this.$store.dispatch('getSettings'),
+      this.$store.dispatch('getRecords')
+    ]).then(() => {
+      this.isLoading = false
+    })
   },
   methods: {
     handleTabBarSelected (selectedID) {
